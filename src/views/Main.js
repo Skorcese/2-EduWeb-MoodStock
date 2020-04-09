@@ -16,6 +16,11 @@ class Main extends Component {
   };
 
   componentDidMount() {
+    if (this.props.settings_geolocation) return this.fetchGeolocation();
+    if (this.props.settings_weather) return this.fetchWeather(this.state.lat, this.state);
+  }
+
+  fetchGeolocation = () => {
     window.navigator.geolocation.getCurrentPosition(
       position =>
         this.setState({
@@ -24,14 +29,12 @@ class Main extends Component {
         }),
       err => this.setState({ errorMessage: err.message }),
     );
-  }
-
-  componentDidUpdate() {}
+  };
 
   fetchWeather = async (lat, long) => {
     const response = await getWeather(`?lat=${lat}&lon=${long}`);
 
-    console.log(response);
+    console.log(response.data);
   };
 
   onSearchSubmit = async term => {
@@ -59,7 +62,7 @@ class Main extends Component {
     return (
       <div>
         <Form onSubmit={this.onSearchSubmit} />
-        <PhotoGallery photos={images} settingsQty={settings_quantity} />
+        <PhotoGallery photos={images} settingsQty={settings_quantity} mode="main" />
       </div>
     );
   }

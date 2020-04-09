@@ -19,12 +19,11 @@ const StyledDescription = styled.div`
 const Description = ({ mode }) => (
   <StyledDescription>
     <h1>{mode === 'main' ? 'Enter the keyword in the searchbar above.' : 'Favorites.'}</h1>
-
-    {mode === 'main' ? (
-      <p className="first">
-        You can add your favorite photos to the gallery. Just hover on the photo.
-      </p>
-    ) : null}
+    <p className="first">
+      {mode === 'main'
+        ? 'You can add your favorite photos to the gallery. Just hover on the photo and click the heart icon.'
+        : 'Add the photos you like in the serach section above.'}
+    </p>
     {mode === 'main' ? <p>Visit settings for more features.</p> : null}
   </StyledDescription>
 );

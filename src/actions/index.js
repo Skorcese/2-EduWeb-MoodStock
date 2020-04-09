@@ -1,11 +1,11 @@
-export const fetchSettings = () => {
-  return {
-    type: 'FETCH_SETTING',
-    payload: {
-      chuj: 'dupsko',
-    },
-  };
-};
+// export const fetchSettings = () => {
+//   return {
+//     type: 'FETCH_SETTING',
+//     payload: {
+//       chuj: 'dupsko',
+//     },
+//   };
+// };
 
 export const changeSetting = (settingType, val) => {
   return {
@@ -13,6 +13,24 @@ export const changeSetting = (settingType, val) => {
     payload: {
       [settingType]: val,
       settingType,
+    },
+  };
+};
+
+export const addFavorite = image => {
+  return {
+    type: 'ADD_FAVORITE',
+    payload: {
+      ...image,
+    },
+  };
+};
+
+export const removeFavorite = image => {
+  return {
+    type: 'REMOVE_FAVORITE',
+    payload: {
+      ...image,
     },
   };
 };

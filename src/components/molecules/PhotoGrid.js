@@ -5,18 +5,16 @@ import PhotoFrame from './PhotoFrame';
 const StyledPhotoGrid = styled.div`
   margin-top: 2.5rem;
   display: grid;
-  grid-template-columns: repeat(${({ qty }) => qty / 3}, 1fr);
-  /* grid-auto-rows: 20vh; */
-  grid-auto-flow: dense;
-  grid-gap: 1.5rem;
+  grid-template-columns: repeat(${({ qty }) => (qty ? qty / 3 : 4)}, 1fr);
+  grid-template-rows: 1fr 1fr 1fr;
   background-color: ${({ theme }) => theme.primary};
   border-radius: 2rem;
 `;
 
-const PhotoGrid = ({ photos, qty }) => (
+const PhotoGrid = ({ photos, qty, mode }) => (
   <StyledPhotoGrid qty={qty}>
     {photos.map(img => (
-      <PhotoFrame key={img.id} image={img} />
+      <PhotoFrame key={img.id} image={img} mode={mode} />
     ))}
   </StyledPhotoGrid>
 );

@@ -5,17 +5,37 @@ import PhotoOverlay from '../atoms/PhotoOverlay';
 
 const StyledPhotoFrame = styled.div`
   position: relative;
+  transition: all 0.5s ease-out;
 
-  :hover ~ .over {
-    position: relative;
-    border: 1rem solid yellow;
+  .over {
+    opacity: 0;
+  }
+
+  .under:hover {
+    filter: blur(4px) brightness(70%);
+
+    ~ .over {
+      opacity: 1;
+    }
+  }
+
+  .over:hover ~ .under:hover {
+    filter: blur(7px) brightness(50%);
+  }
+
+  .over:hover {
+    opacity: 1;
+
+    ~ .under {
+      filter: blur(7px) brightness(50%);
+    }
   }
 `;
 
-const PhotoFrame = ({ image }) => (
+const PhotoFrame = ({ image, mode }) => (
   <StyledPhotoFrame>
-    <Photo src={image.url} />
-    <PhotoOverlay className="over" author={image.user} />
+    <Photo className="under" src={image.url} />
+    <PhotoOverlay className="over" author={image.user} image={image} mode={mode} />
   </StyledPhotoFrame>
 );
 

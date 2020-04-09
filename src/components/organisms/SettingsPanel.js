@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSettings, changeSetting } from '../../actions';
+import { changeSetting } from '../../actions';
 import styled from 'styled-components';
 import SettingInput from '../molecules/SettingInput';
 
@@ -27,7 +27,7 @@ const StyledSettingsPanel = styled.div`
 
 class SettingsPanel extends Component {
   componentDidMount() {
-    this.props.fetchSettings();
+    // this.props.fetchSettings();
   }
 
   onRadioChange = e => {
@@ -78,7 +78,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchSettings: () => dispatch(fetchSettings()),
+  // fetchSettings: () => dispatch(fetchSettings()),
   changeSetting: (settingType, val) => dispatch(changeSetting(settingType, val)),
 });
 
