@@ -2,17 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledDescription = styled.div`
-  position: relative;
-  margin: 10rem 20rem;
-  padding: 10rem;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  text-align: justify;
+  padding: 7rem;
   color: ${({ theme }) => theme.secondary};
 
   h1 {
     margin-bottom: 1rem;
+    text-align: center;
   }
 
   .first {
     margin-bottom: 1rem;
+    text-align-last: center;
   }
 `;
 

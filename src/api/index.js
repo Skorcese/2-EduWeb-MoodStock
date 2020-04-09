@@ -9,8 +9,10 @@ export const unsplash = axios.create({
 
 const openWeatherKey = 'd50a614e489fbba6669358f04ee95daa';
 
-const openWeather = axios.create({
+export const openWeather = axios.create({
   baseURL: 'https://api.openweathermap.org/data/2.5',
 });
 
-export const getWeather = query => openWeather.get(`weather${query}&appid=${openWeatherKey}`);
+export const weatherQuery = query => {
+  return `weather${query}&appid=${openWeatherKey}`;
+};

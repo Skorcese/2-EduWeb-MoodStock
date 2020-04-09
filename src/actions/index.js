@@ -2,7 +2,7 @@
 //   return {
 //     type: 'FETCH_SETTING',
 //     payload: {
-//       chuj: 'dupsko',
+//
 //     },
 //   };
 // };

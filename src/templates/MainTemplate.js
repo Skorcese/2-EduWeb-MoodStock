@@ -9,6 +9,12 @@ import Header from '../components/organisms/Header';
 const MainTemplate = ({ children }) => (
   <div>
     <GlobalStyle />
+    <Helmet>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap"
+        rel="stylesheet"
+      />
+    </Helmet>
     <ThemeProvider theme={theme}>
       <>
         <Header />
