@@ -1,23 +1,18 @@
 import _ from 'lodash';
 
+const lsFav = JSON.parse(localStorage.getItem('favorites')) || [];
+const lsSq = JSON.parse(localStorage.getItem('settings_quantity')) || 9;
+const lsSg = JSON.parse(localStorage.getItem('settings_geolocation')) || false;
+const lsSw = JSON.parse(localStorage.getItem('settings_weather')) || false;
+
 const initialState = {
-  favorites: [],
-  settings_quantity: 9,
-  settings_geolocation: false,
-  settings_weather: false,
+  favorites: lsFav,
+  settings_quantity: lsSq,
+  settings_geolocation: lsSg,
+  settings_weather: lsSw,
 };
 
-const localStorageState = {
-  favorites: JSON.parse(localStorage.getItem('favorites')).favorites,
-  settings_quantity: JSON.parse(localStorage.getItem('settings_quantity')).settings_quantity,
-  settings_geolocation: JSON.parse(localStorage.getItem('settings_geolocation'))
-    .settings_geolocation,
-  settings_weather: JSON.parse(localStorage.getItem('settings_weather')).settings_weather,
-};
-
-const ifState = localStorageState || initialState;
-
-const rootReducer = (state = ifState, action) => {
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'CHANGE_SETTING':
       localStorage.setItem(

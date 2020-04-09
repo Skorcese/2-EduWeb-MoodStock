@@ -7,12 +7,12 @@ export const unsplash = axios.create({
   },
 });
 
-const openWeatherKey = 'd50a614e489fbba6669358f04ee95daa';
+export const openWeatherKey = 'd50a614e489fbba6669358f04ee95daa';
 
 export const openWeather = axios.create({
   baseURL: 'https://api.openweathermap.org/data/2.5',
 });
 
-export const weatherQuery = query => {
-  return `weather${query}&appid=${openWeatherKey}`;
-};
+// export const weatherQuery = query => {
+//   return `weather${query}&appid=${openWeatherKey}`;
+// };

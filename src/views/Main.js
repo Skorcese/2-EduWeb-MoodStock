@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { unsplash } from '../api';
+import { unsplash, openWeatherKey } from '../api';
 import Form from '../components/molecules/Form';
 import PhotoGallery from '../components/organisms/PhotoGallery';
 
@@ -31,7 +31,8 @@ class Main extends Component {
 
   getData = async () => {
     if (this.props.settings_geolocation === true) return this.fetchGeolocation();
-    if (this.props.settings_weather === true) return this.test(this.state.lat, this.state);
+    if (this.props.settings_weather === true)
+      return this.fetchWeatherTerms(this.state.lat, this.state);
   };
 
   fetchGeolocation = () => {
@@ -45,11 +46,9 @@ class Main extends Component {
     );
   };
 
-  test = (lat, long) => {
-    const key = 'd50a614e489fbba6669358f04ee95daa';
-
+  fetchWeatherTerms = (lat, long) => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=${key}&units=metric`,
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=${openWeatherKey}&units=metric`,
     )
       .then(result => result.json())
       .then(result => {
