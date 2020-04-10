@@ -22,7 +22,7 @@ const rootReducer = (state = initialState, action) => {
         }),
       );
       return {
-        // ...state,
+        ...state,
         [action.payload.settingType]: Object.values(action.payload)[0],
       };
 
@@ -42,7 +42,7 @@ const rootReducer = (state = initialState, action) => {
         );
 
       return {
-        // ...state,
+        ...state,
         favorites: [...state.favorites, action.payload],
       };
 
@@ -56,7 +56,7 @@ const rootReducer = (state = initialState, action) => {
       );
 
       return {
-        // ...state,
+        ...state,
         favorites: _.filter(state.favorites, i => i.id !== action.payload.id),
       };
     default:
