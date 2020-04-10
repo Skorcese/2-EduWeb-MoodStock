@@ -1,15 +1,20 @@
 import _ from 'lodash';
 
-const lsFav = JSON.parse(localStorage.getItem('favorites')) || [];
-const lsSq = JSON.parse(localStorage.getItem('settings_quantity')) || 9;
-const lsSg = JSON.parse(localStorage.getItem('settings_geolocation')) || false;
-const lsSw = JSON.parse(localStorage.getItem('settings_weather')) || false;
+const lsFav = JSON.parse(localStorage.getItem('favorites'));
+const lsSq = JSON.parse(localStorage.getItem('settings_quantity'));
+const lsSg = JSON.parse(localStorage.getItem('settings_geolocation'));
+const lsSw = JSON.parse(localStorage.getItem('settings_weather'));
+
+const checkLsFav = _.isEmpty(lsFav) ? [] : lsFav.favorites;
+const checkLsSq = _.isEmpty(lsSq) ? 9 : lsSq.settings_quantity;
+const checkLsSg = _.isEmpty(lsSg) ? false : lsSg.settings_geolocation;
+const checkLsSw = _.isEmpty(lsSw) ? false : lsSw.settings_weather;
 
 const initialState = {
-  favorites: lsFav,
-  settings_quantity: lsSq,
-  settings_geolocation: lsSg,
-  settings_weather: lsSw,
+  favorites: checkLsFav,
+  settings_quantity: checkLsSq,
+  settings_geolocation: checkLsSg,
+  settings_weather: checkLsSw,
 };
 
 const rootReducer = (state = initialState, action) => {
